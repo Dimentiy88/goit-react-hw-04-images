@@ -55,6 +55,18 @@ export const App = () => {
     getData();
   }, [currentSearch, pageNr]);
 
+  useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.code === 'Escape') {
+        handleModalClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   const handleImageClick = e => {
     setModalOpen(true);
     setModalAlt(e.target.alt);
@@ -66,20 +78,6 @@ export const App = () => {
     setModalImg('');
     setModalAlt('');
   };
-
-  const handleKeyDown = event => {
-    if (event.code === 'Escape') {
-      handleModalClose();
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  });
 
   return (
     <div
