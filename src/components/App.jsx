@@ -79,7 +79,7 @@ export const App = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  });
 
   return (
     <div
@@ -107,4 +107,4 @@ export const App = () => {
   );
 };
 
-// export default App;
+export default App;
