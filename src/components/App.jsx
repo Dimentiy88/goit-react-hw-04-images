@@ -40,6 +40,9 @@ export const App = () => {
   };
 
   useEffect(() => {
+    if (currentSearch.trim() === '') {
+      return;
+    }
     const getData = async () => {
       setIsLoading(true);
       try {
